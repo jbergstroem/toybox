@@ -5,6 +5,13 @@
 
 [ -f testing.sh ] && . testing.sh
 
+if [ "$(id -u)" -ne 0 ]
+then
+  echo "SKIPPED: hostname (not root)"
+  continue 2>/dev/null
+  exit
+fi
+
 #testing "name" "command" "result" "infile" "stdin"
 
 # Get system hostname
